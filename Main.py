@@ -17,7 +17,7 @@ else:
 			green = 255
 		red = 255-green
 
-		blinkt.set_pixel(6+i, red, green, 0, .5)
+		blinkt.set_pixel(6+i, red, green, 0, .1)
 		
 weather = Functions.weather("Kirkby", "UK", weatherAPI)
 weatherMain = weather["weather"][0]["main"]
