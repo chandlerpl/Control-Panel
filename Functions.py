@@ -1,5 +1,6 @@
 import speedtest
 import requests
+import os
 
 def speedTest():
 	try:

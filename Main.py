@@ -1,6 +1,5 @@
 import Functions
-import blinkts
-import os
+import blinkt
 
 BASESPEED = 10
 weatherAPI = "f0ecf01eae9884d6fa621352cb187b36"
@@ -8,9 +7,9 @@ weatherAPI = "f0ecf01eae9884d6fa621352cb187b36"
 blinkt.set_clear_on_exit(False)
 speedtest = Functions.speedTest()
 if speedtest == False:
-	blinkt.set_pixel(6, 0, 0, 255)
-	blinkt.set_pixel(7, 0, 0, 255)
-else
+	blinkt.set_pixel(6, 0, 0, 255, .5)
+	blinkt.set_pixel(7, 0, 0, 255, .5)
+else:
 	for i in range(len(speedtest)):
 		green = speedtest[i]/BASESPEED*255
 
@@ -18,10 +17,10 @@ else
 			green = 255
 		red = 255-green
 
-		blinkt.set_pixel(6+i, red, green, 0)
+		blinkt.set_pixel(6+i, red, green, 0, .5)
 		
 weather = Functions.weather("Kirkby", "UK", weatherAPI)
-weatherMain = weather["weather"]["main"]
+weatherMain = weather["weather"][0]["main"]
 
 if weatherMain == "Clear":
 	r, g, b, w = 255, 25, 0, .5
@@ -41,11 +40,11 @@ else:
 	f.writelines(weatherMain)
 	f.close()
 
-blinkt.set_pixel(r, g, b, w)
+blinkt.set_pixel(4, r, g, b, w)
 	
 ckplWebsite = Functions.websiteChecker("www.cpope.uk")
 if ckplWebsite == False:
-    blinkt.set_pixel(5, 0, 0, 255)
+    blinkt.set_pixel(5, 0, 0, 255, .5)
     blinkt.show()
 else:
     green = ckplWebsite/100*255
