@@ -7,8 +7,8 @@ weatherAPI = "f0ecf01eae9884d6fa621352cb187b36"
 blinkt.set_clear_on_exit(False)
 speedtest = Functions.speedTest()
 if speedtest == False:
-	blinkt.set_pixel(6, 0, 0, 255, .5)
-	blinkt.set_pixel(7, 0, 0, 255, .5)
+	blinkt.set_pixel(6, 0, 0, 255, .1)
+	blinkt.set_pixel(7, 0, 0, 255, .1)
 else:
 	for i in range(len(speedtest)):
 		green = speedtest[i]/BASESPEED*255
